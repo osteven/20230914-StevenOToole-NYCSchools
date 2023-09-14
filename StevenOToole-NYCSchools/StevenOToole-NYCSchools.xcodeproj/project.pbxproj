@@ -17,6 +17,8 @@
 		B09484BC2AB3A3AA006757B5 /* StevenOToole_NYCSchoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484BB2AB3A3AA006757B5 /* StevenOToole_NYCSchoolsTests.swift */; };
 		B09484C32AB3A41B006757B5 /* HighSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C22AB3A41B006757B5 /* HighSchool.swift */; };
 		B09484C52AB3AED3006757B5 /* SATScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C42AB3AED3006757B5 /* SATScore.swift */; };
+		B09484C72AB3B075006757B5 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C62AB3B075006757B5 /* URLSession+Extension.swift */; };
+		B09484C92AB3B0FC006757B5 /* NYCSchoolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C82AB3B0FC006757B5 /* NYCSchoolAPI.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +44,8 @@
 		B09484BB2AB3A3AA006757B5 /* StevenOToole_NYCSchoolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StevenOToole_NYCSchoolsTests.swift; sourceTree = "<group>"; };
 		B09484C22AB3A41B006757B5 /* HighSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighSchool.swift; sourceTree = "<group>"; };
 		B09484C42AB3AED3006757B5 /* SATScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SATScore.swift; sourceTree = "<group>"; };
+		B09484C62AB3B075006757B5 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
+		B09484C82AB3B0FC006757B5 /* NYCSchoolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolAPI.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +134,7 @@
 		B09484AC2AB39C49006757B5 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				B09484C82AB3B0FC006757B5 /* NYCSchoolAPI.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -139,6 +144,7 @@
 			children = (
 				B09484AE2AB39D9C006757B5 /* Logger+Extensions.swift */,
 				B09484B02AB39E9E006757B5 /* Color+Extensions.swift */,
+				B09484C62AB3B075006757B5 /* URLSession+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -264,6 +270,8 @@
 				B02FE6A92AB3979600625809 /* HomeView.swift in Sources */,
 				B02FE6A72AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift in Sources */,
 				B09484C52AB3AED3006757B5 /* SATScore.swift in Sources */,
+				B09484C92AB3B0FC006757B5 /* NYCSchoolAPI.swift in Sources */,
+				B09484C72AB3B075006757B5 /* URLSession+Extension.swift in Sources */,
 				B09484C32AB3A41B006757B5 /* HighSchool.swift in Sources */,
 				B09484B12AB39E9E006757B5 /* Color+Extensions.swift in Sources */,
 				B09484B42AB39EE4006757B5 /* Settings.swift in Sources */,

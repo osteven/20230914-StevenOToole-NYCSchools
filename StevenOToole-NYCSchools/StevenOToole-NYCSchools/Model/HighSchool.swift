@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - HighSchool
+
 public struct HighSchool: Identifiable, Decodable {
     public let id: String
     public let name: String
@@ -47,6 +49,7 @@ public struct HighSchool: Identifiable, Decodable {
     }
 }
 
+// MARK: - Mock
 
 #if DEBUG
 extension HighSchool {

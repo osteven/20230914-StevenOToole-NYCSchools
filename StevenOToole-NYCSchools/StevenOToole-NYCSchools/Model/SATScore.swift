@@ -7,6 +7,8 @@
 
 import Foundation
 
+// MARK: - SATScore
+
 public struct SATScore: Decodable {
     public let id: String
     public let name: String
@@ -49,6 +51,8 @@ public struct SATScore: Decodable {
         }
     }
 }
+
+// MARK: - Mock
 
 #if DEBUG
 extension SATScore {
