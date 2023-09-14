@@ -52,6 +52,15 @@ public struct HighSchool: Identifiable, Decodable {
     }
 }
 
+extension HighSchool: Equatable, Hashable {
+    public static func == (lhs: HighSchool, rhs: HighSchool) -> Bool {
+        lhs.id == rhs.id
+    }
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
+
 // MARK: - Mock
 
 #if DEBUG

@@ -10,20 +10,38 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var schoolAPI: NYCSchoolAPI
     @EnvironmentObject var viewModel: ViewModel
-
+    
     var body: some View {
-        StandardLayoutView {
-            VStack {
-                Text("NYC High Schools: \($viewModel.currentSelection.count)")
-                if viewModel.currentSelection.isEmpty {
+        if viewModel.currentSelection.isEmpty {
+            ZStack(alignment: .top) {
+                Color.clear
+                VStack {
+                    Text("Welcome to NYC High Schools")
+                        .font(.title2)
+                        .padding(.top, 32)
+                        .padding()
                     Button(action: apiAction, label: {
-                        Text("API Call")
+                        VStack {
+                            Text("Touch here to load")
+                                .font(.callout)
+                                .padding(.bottom, 2)
+                            Text("(it will take a few seconds)")
+                                .font(.caption)
+                        }
                     })
-                } else {
-                    SchoolListView()
+                    Image(systemName: "graduationcap.fill")
+                        .resizable()
+                        .foregroundColor(.Palette.teal)
+                        .frame(width: 128, height: 128)
+                        .padding(.top, 32)
                 }
             }
-            .padding()
+        } else {
+            NavigationStack {
+                SchoolListView()
+                    .navigationTitle("NYC High Schools")
+                    .navigationBarTitleDisplayMode(.inline)
+            }
         }
     }
     
@@ -34,15 +52,23 @@ struct HomeView: View {
 
 
 private struct SchoolListView: View {
-    @EnvironmentObject var viewModel: ViewModel    
+    @EnvironmentObject var viewModel: ViewModel
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack(spacing: 8) {
-                ForEach(Array(viewModel.currentSelection.enumerated()), id: \.offset) { index, item in
+            List(viewModel.currentSelection) { item in
+                NavigationLink {
+                    SchoolDetailView()
+                } label: {
                     SchoolListCellView(item: item)
                 }
             }
-        }
+            .background(Color.clear)
+            .listStyle(.plain)
+    }
+}
+
+private struct SchoolDetailView: View {
+    var body: some View {
+        Color.Palette.red
     }
 }
 
@@ -51,13 +77,12 @@ private struct SchoolListCellView: View {
     var body: some View {
         HStack {
             Text("\(item.name)")
+                .padding(.horizontal, 8)
                 .frame(alignment: .leading)
-                .padding()
             Spacer()
         }
-        .frame(minHeight: 48)
-        .background(Color.Palette.red.opacity(0.2))
-        .cornerRadius(8)
+        .frame(minHeight: 64)
+        .background(Color.Palette.red.opacity(0.1).cornerRadius(8))
     }
 }
 
