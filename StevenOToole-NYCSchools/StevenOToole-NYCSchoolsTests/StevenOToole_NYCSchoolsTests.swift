@@ -25,4 +25,15 @@ final class StevenOToole_NYCSchoolsTests: XCTestCase {
         XCTAssert(schools[2].totalStudents == 338)
     }
     
+    func testDecodeScores() throws {
+        guard let data = SATScore.mockJSON.data(using: .utf8) else {
+            XCTAssert(false)
+            return
+        }
+        let scores = try decoder.decode([SATScore].self, from: data)
+        XCTAssert(scores.count == 2)
+        XCTAssert(scores[0].mathAvg == 369)
+        XCTAssert(scores[1].writingAvg == 378)
+    }
+
 }
