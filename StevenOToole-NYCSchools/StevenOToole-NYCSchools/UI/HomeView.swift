@@ -8,23 +8,50 @@
 import SwiftUI
 
 struct HomeView: View {
-    @ObservedObject var schoolAPI: NYCSchoolAPI
-    @ObservedObject var viewModel: ViewModel
+    @EnvironmentObject var schoolAPI: NYCSchoolAPI
+    @EnvironmentObject var viewModel: ViewModel
 
     var body: some View {
-        VStack {
-            Text("NYC High Schools: \($viewModel.currentSelection.count)")
-            Button(action: apiAction, label: {
-                Text("API Call")
-            })
-       }
-        .padding()
+        StandardLayoutView {
+            VStack {
+                Text("NYC High Schools: \($viewModel.currentSelection.count)")
+                if viewModel.currentSelection.isEmpty {
+                    Button(action: apiAction, label: {
+                        Text("API Call")
+                    })
+                } else {
+                    SchoolListView()
+                }
+            }
+            .padding()
+        }
     }
     
     private func apiAction() {
         viewModel.load(with: schoolAPI)
      }
 }
+
+
+private struct SchoolListView: View {
+    @EnvironmentObject var viewModel: ViewModel
+    
+    var body: some View {
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack(spacing: 8) {
+                ForEach(Array(viewModel.currentSelection.enumerated()), id: \.offset) { index, item in
+                    HStack {
+                        Text("\(index) \(item.id) \(item.name)")
+                    }
+                }
+                
+            }
+        }
+    }
+}
+
+
+// MARK: - Previews
 
 struct ContentView_Previews: PreviewProvider {
     private static let schoolAPI = NYCSchoolAPI()
@@ -34,6 +61,8 @@ struct ContentView_Previews: PreviewProvider {
         return viewModel
     }()
     static var previews: some View {
-        HomeView(schoolAPI: schoolAPI, viewModel: viewModel)
+        HomeView()
+            .environmentObject(schoolAPI)
+            .environmentObject(viewModel)
     }
 }

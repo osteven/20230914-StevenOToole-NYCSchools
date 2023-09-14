@@ -14,7 +14,9 @@ struct StevenOToole_NYCSchoolsApp: App {
 
     var body: some Scene {
         WindowGroup {
-            HomeView(schoolAPI: schoolAPI, viewModel: viewModel)
+            HomeView()
+                .environmentObject(schoolAPI)
+                .environmentObject(viewModel)
         }
     }
 }

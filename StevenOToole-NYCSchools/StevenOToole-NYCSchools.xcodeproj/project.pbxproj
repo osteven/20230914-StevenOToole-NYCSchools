@@ -20,6 +20,7 @@
 		B09484C72AB3B075006757B5 /* URLSession+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C62AB3B075006757B5 /* URLSession+Extension.swift */; };
 		B09484C92AB3B0FC006757B5 /* NYCSchoolAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C82AB3B0FC006757B5 /* NYCSchoolAPI.swift */; };
 		B09484CB2AB3B2C2006757B5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484CA2AB3B2C2006757B5 /* ViewModel.swift */; };
+		B09484CD2AB3B492006757B5 /* StandardLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B09484C62AB3B075006757B5 /* URLSession+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+Extension.swift"; sourceTree = "<group>"; };
 		B09484C82AB3B0FC006757B5 /* NYCSchoolAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NYCSchoolAPI.swift; sourceTree = "<group>"; };
 		B09484CA2AB3B2C2006757B5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardLayoutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				B02FE6A82AB3979600625809 /* HomeView.swift */,
+				B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B09484CD2AB3B492006757B5 /* StandardLayoutView.swift in Sources */,
 				B09484CB2AB3B2C2006757B5 /* ViewModel.swift in Sources */,
 				B09484AF2AB39D9C006757B5 /* Logger+Extensions.swift in Sources */,
 				B02FE6A92AB3979600625809 /* HomeView.swift in Sources */,
