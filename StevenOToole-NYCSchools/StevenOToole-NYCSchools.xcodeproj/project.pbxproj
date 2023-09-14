@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B02FE6A72AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FE6A62AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift */; };
-		B02FE6A92AB3979600625809 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FE6A82AB3979600625809 /* ContentView.swift */; };
+		B02FE6A92AB3979600625809 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B02FE6A82AB3979600625809 /* HomeView.swift */; };
 		B02FE6AB2AB3979700625809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02FE6AA2AB3979700625809 /* Assets.xcassets */; };
 		B02FE6AE2AB3979700625809 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B02FE6AD2AB3979700625809 /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
@@ -16,7 +16,7 @@
 /* Begin PBXFileReference section */
 		B02FE6A32AB3979600625809 /* StevenOToole-NYCSchools.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "StevenOToole-NYCSchools.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B02FE6A62AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StevenOToole_NYCSchoolsApp.swift; sourceTree = "<group>"; };
-		B02FE6A82AB3979600625809 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		B02FE6A82AB3979600625809 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		B02FE6AA2AB3979700625809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B02FE6AD2AB3979700625809 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -52,9 +52,11 @@
 			isa = PBXGroup;
 			children = (
 				B02FE6A62AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift */,
-				B02FE6A82AB3979600625809 /* ContentView.swift */,
-				B02FE6AA2AB3979700625809 /* Assets.xcassets */,
-				B02FE6AC2AB3979700625809 /* Preview Content */,
+				B09484AA2AB39C2D006757B5 /* UI */,
+				B09484AC2AB39C49006757B5 /* Services */,
+				B09484AB2AB39C3E006757B5 /* Model */,
+				B09484AD2AB39C55006757B5 /* Extensions */,
+				B09484A92AB39BEC006757B5 /* Resources */,
 			);
 			path = "StevenOToole-NYCSchools";
 			sourceTree = "<group>";
@@ -65,6 +67,44 @@
 				B02FE6AD2AB3979700625809 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		B09484A92AB39BEC006757B5 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B02FE6AC2AB3979700625809 /* Preview Content */,
+				B02FE6AA2AB3979700625809 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B09484AA2AB39C2D006757B5 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				B02FE6A82AB3979600625809 /* HomeView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		B09484AB2AB39C3E006757B5 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B09484AC2AB39C49006757B5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B09484AD2AB39C55006757B5 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,7 +177,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B02FE6A92AB3979600625809 /* ContentView.swift in Sources */,
+				B02FE6A92AB3979600625809 /* HomeView.swift in Sources */,
 				B02FE6A72AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -266,15 +306,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"StevenOToole-NYCSchools/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"StevenOToole-NYCSchools/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = M4776Z724S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -282,9 +321,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.o2l.StevenOToole-NYCSchools";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -295,15 +337,14 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"StevenOToole-NYCSchools/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"StevenOToole-NYCSchools/Resources/Preview Content\"";
 				DEVELOPMENT_TEAM = M4776Z724S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,9 +352,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.o2l.StevenOToole-NYCSchools";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
