@@ -7,6 +7,8 @@
 
 import Foundation
 
+public typealias DBNIdentifier = String
+
 // MARK: - HighSchool
 
 public struct HighSchool: Identifiable, Decodable {
@@ -17,6 +19,7 @@ public struct HighSchool: Identifiable, Decodable {
     public let totalStudents: Int?
     public let email: String?
     public let overviewParagraph: String
+    public var scores: SATScore?
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)

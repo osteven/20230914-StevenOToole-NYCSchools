@@ -10,10 +10,11 @@ import SwiftUI
 @main
 struct StevenOToole_NYCSchoolsApp: App {
     private let schoolAPI = NYCSchoolAPI()
+    private let viewModel = ViewModel()
 
     var body: some Scene {
         WindowGroup {
-            HomeView(schoolAPI: schoolAPI)
+            HomeView(schoolAPI: schoolAPI, viewModel: viewModel)
         }
     }
 }

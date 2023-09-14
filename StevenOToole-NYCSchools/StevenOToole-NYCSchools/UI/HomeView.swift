@@ -9,12 +9,11 @@ import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var schoolAPI: NYCSchoolAPI
+    @ObservedObject var viewModel: ViewModel
+
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
+            Text("NYC High Schools: \($viewModel.currentSelection.count)")
             Button(action: apiAction, label: {
                 Text("API Call")
             })
@@ -23,23 +22,18 @@ struct HomeView: View {
     }
     
     private func apiAction() {
-        schoolAPI.getSchools { result in
-            switch result {
-            case .success(let schools):
-                print("🟢 \(schools.count)")
-                for school in schools {
-                    print("\t\(school.id) \(school.name)")
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
+        viewModel.load(with: schoolAPI)
      }
 }
 
 struct ContentView_Previews: PreviewProvider {
     private static let schoolAPI = NYCSchoolAPI()
+    private static let viewModel: ViewModel = {
+        let viewModel = ViewModel()
+        viewModel.mockingSetup()
+        return viewModel
+    }()
     static var previews: some View {
-        HomeView(schoolAPI: schoolAPI)
+        HomeView(schoolAPI: schoolAPI, viewModel: viewModel)
     }
 }

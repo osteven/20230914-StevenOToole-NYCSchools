@@ -36,4 +36,39 @@ final class StevenOToole_NYCSchoolsTests: XCTestCase {
         XCTAssert(scores[1].writingAvg == 378)
     }
 
+    func testSchoolsToDictionary() throws {
+        guard let data = HighSchool.mockJSON.data(using: .utf8) else {
+            XCTAssert(false)
+            return
+        }
+        let schools = try decoder.decode([HighSchool].self, from: data)
+        let schoolDictionary = Dictionary(uniqueKeysWithValues: schools.map { ($0.id, $0) })
+        XCTAssert(schoolDictionary.count == 3)
+        XCTAssertNotNil(schoolDictionary["21K728"])
+        XCTAssertNotNil(schoolDictionary["08X282"])
+    }
+    
+    func testViewModel() throws {
+        guard let scoresData = SATScore.mockJSON.data(using: .utf8) else {
+            XCTAssert(false)
+            return
+        }
+        let scores = try decoder.decode([SATScore].self, from: scoresData)
+        guard let schoolData = HighSchool.mockJSON.data(using: .utf8) else {
+            XCTAssert(false)
+            return
+        }
+        let schools = try decoder.decode([HighSchool].self, from: schoolData)
+        let viewModel = ViewModel()
+        viewModel.load(from: schools, with: scores)
+        // Load is async so the test needs a little delay
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(10)) {
+            guard let dbn21K728 = viewModel.school(for: "21K728") else {
+                XCTAssert(false)
+                return
+            }
+            XCTAssert(dbn21K728.id == "21K728")
+            XCTAssert(dbn21K728.scores?.mathAvg == 369)
+        }
+    }
 }
