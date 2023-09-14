@@ -17,6 +17,16 @@ public struct SATScore: Decodable {
     public let mathAvg: Int?
     public let writingAvg: Int?
     
+    var bestScore: (Int, String)? {
+        let best = max(readingAvg ?? 0, mathAvg ?? 0, writingAvg ?? 0)
+        switch best {
+        case readingAvg: return (best, "Reading")
+        case mathAvg: return (best, "Math")
+        case writingAvg: return (best, "Writing")
+        default: return nil
+        }
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "dbn"
         case name = "school_name"

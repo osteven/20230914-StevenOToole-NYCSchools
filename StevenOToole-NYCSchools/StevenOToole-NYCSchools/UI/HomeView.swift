@@ -75,11 +75,25 @@ private struct SchoolDetailView: View {
 private struct SchoolListCellView: View {
     let item: HighSchool
     var body: some View {
-        HStack {
-            Text("\(item.name)")
-                .padding(.horizontal, 8)
-                .frame(alignment: .leading)
-            Spacer()
+        VStack {
+            HStack(alignment: .top) {
+                Text("\(item.name)")
+                    .padding(.horizontal, 8)
+                    .padding(.top, 8)
+                    .frame(alignment: .leading)
+                Spacer()
+            }
+            if let best = item.scores?.bestScore {
+                HStack(alignment: .lastTextBaseline) {
+                    Spacer()
+                    Text("Best SAT: \(best.0) \(best.1)")
+                        .frame(alignment: .trailing)
+                        .font(.caption2)
+                }
+                .padding(8)
+            } else {
+                Spacer()
+            }
         }
         .frame(minHeight: 64)
         .background(Color.Palette.red.opacity(0.1).cornerRadius(8))
