@@ -10,10 +10,40 @@ import Foundation
 public struct HighSchool: Identifiable, Decodable {
     public let id: String
     public let name: String
+    public let latitude: Double?
+    public let longitude: Double?
+    public let totalStudents: Int?
+    public let email: String?
+    public let overviewParagraph: String
 
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(String.self, forKey: .id)
+        name = try container.decode(String.self, forKey: .name)
+        if let latitudeString = try container.decodeIfPresent(String.self, forKey: .latitude) {
+            latitude = Double(latitudeString)
+        } else {
+            latitude = nil
+        }
+        if let longitudeString = try container.decodeIfPresent(String.self, forKey: .longitude) {
+            longitude = Double(longitudeString)
+        } else {
+            longitude = nil
+        }
+        let totalStudentsString = try container.decode(String.self, forKey: .totalStudents)
+        totalStudents = Int(totalStudentsString)
+        email = try container.decodeIfPresent(String.self, forKey: .email)
+        overviewParagraph = try container.decode(String.self, forKey: .overviewParagraph)
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id = "dbn"
         case name = "school_name"
+        case latitude
+        case longitude
+        case totalStudents = "total_students"
+        case email = "school_email"
+        case overviewParagraph = "overview_paragraph"
     }
 }
 
