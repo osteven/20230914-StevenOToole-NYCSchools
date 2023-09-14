@@ -15,6 +15,7 @@
 		B09484B12AB39E9E006757B5 /* Color+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484B02AB39E9E006757B5 /* Color+Extensions.swift */; };
 		B09484B42AB39EE4006757B5 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484B32AB39EE4006757B5 /* Settings.swift */; };
 		B09484BC2AB3A3AA006757B5 /* StevenOToole_NYCSchoolsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484BB2AB3A3AA006757B5 /* StevenOToole_NYCSchoolsTests.swift */; };
+		B09484C32AB3A41B006757B5 /* HighSchool.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484C22AB3A41B006757B5 /* HighSchool.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		B09484B32AB39EE4006757B5 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		B09484B92AB3A3AA006757B5 /* StevenOToole-NYCSchoolsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "StevenOToole-NYCSchoolsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B09484BB2AB3A3AA006757B5 /* StevenOToole_NYCSchoolsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StevenOToole_NYCSchoolsTests.swift; sourceTree = "<group>"; };
+		B09484C22AB3A41B006757B5 /* HighSchool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighSchool.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 		B09484AB2AB39C3E006757B5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B09484C22AB3A41B006757B5 /* HighSchool.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				B09484AF2AB39D9C006757B5 /* Logger+Extensions.swift in Sources */,
 				B02FE6A92AB3979600625809 /* HomeView.swift in Sources */,
 				B02FE6A72AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift in Sources */,
+				B09484C32AB3A41B006757B5 /* HighSchool.swift in Sources */,
 				B09484B12AB39E9E006757B5 /* Color+Extensions.swift in Sources */,
 				B09484B42AB39EE4006757B5 /* Settings.swift in Sources */,
 			);
