@@ -34,22 +34,32 @@ struct HomeView: View {
 
 
 private struct SchoolListView: View {
-    @EnvironmentObject var viewModel: ViewModel
-    
+    @EnvironmentObject var viewModel: ViewModel    
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 8) {
                 ForEach(Array(viewModel.currentSelection.enumerated()), id: \.offset) { index, item in
-                    HStack {
-                        Text("\(index) \(item.id) \(item.name)")
-                    }
+                    SchoolListCellView(item: item)
                 }
-                
             }
         }
     }
 }
 
+private struct SchoolListCellView: View {
+    let item: HighSchool
+    var body: some View {
+        HStack {
+            Text("\(item.name)")
+                .frame(alignment: .leading)
+                .padding()
+            Spacer()
+        }
+        .frame(minHeight: 48)
+        .background(Color.Palette.red.opacity(0.2))
+        .cornerRadius(8)
+    }
+}
 
 // MARK: - Previews
 
