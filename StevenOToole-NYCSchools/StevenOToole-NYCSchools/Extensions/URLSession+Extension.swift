@@ -45,8 +45,6 @@ extension URLSession {
             case .success((let httpResponse, let data)):
                 do {
                     try self.validateHTTP(response: httpResponse)
-                    let result = String(data: data, encoding: .utf8)
-                    print(result ?? "empty")
                     let model = try JSONDecoder().decode(T.self, from: data)
                     completion(.success(model))
                 } catch {

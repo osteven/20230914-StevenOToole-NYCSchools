@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import OSLog
 
 // MARK: - ViewModel
 
@@ -47,7 +48,7 @@ extension ViewModel {
             case .success(let schools):
                 loadScores(with: api, into: schools)
             case .failure(let error):
-                print(error.localizedDescription)
+                Logger.model.error("\(error, privacy: .public)")
                 loading = false
             }
         }
@@ -61,7 +62,7 @@ extension ViewModel {
                 var schoolDictionary = Dictionary(uniqueKeysWithValues: schools.map { ($0.id, $0) })
                 for score in allScores {
                     guard var school = schoolDictionary[score.id] else {
-                        print("unmatched score: \(score)")
+                        Logger.model.warning("unmatched score: \(score.id, privacy: .public)")
                         continue
                     }
                     school.scores = score
@@ -69,7 +70,7 @@ extension ViewModel {
                 }
                 set(schools: schoolDictionary)
             case .failure(let error):
-                print(error.localizedDescription)
+                Logger.model.error("\(error, privacy: .public)")
                 self?.loading = false
             }
         }
@@ -81,9 +82,8 @@ extension ViewModel {
 #if DEBUG
 extension ViewModel {
     public func dump() {
-        print("🟠 SCHOOLS")
         for school in currentSelection {
-            print("\t\(school.id) \(school.name)")
+            Logger.model.info("SCHOOL:\t\(school.id, privacy: .public) \(school.name, privacy: .public)")
         }
     }
     
@@ -110,7 +110,7 @@ extension ViewModel {
         var schoolDictionary = Dictionary(uniqueKeysWithValues: schools.map { ($0.id, $0) })
         for score in scores {
             guard var school = schoolDictionary[score.id] else {
-                print("unmatched score: \(score)")
+                Logger.model.warning("unmatched score: \(score.id, privacy: .public)")
                 continue
             }
             school.scores = score

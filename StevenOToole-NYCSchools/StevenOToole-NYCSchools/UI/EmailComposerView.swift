@@ -31,7 +31,7 @@ extension EmailComposerView {
     class Coordinator: NSObject, MFMailComposeViewControllerDelegate {
         func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
             if let error {
-                Logger.email.error("Error: \(error); result: \(result.rawValue)")
+                Logger.email.error("Error: \(error, privacy: .public); result: \(result.rawValue)")
                 // I think this is an edge case, for now it's not worth reporting the error
             }
             controller.dismiss(animated: true, completion: nil)

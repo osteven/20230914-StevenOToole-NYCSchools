@@ -77,7 +77,6 @@ public struct Sports: Decodable {
         let rawArray = string.components(separatedBy: ", ")
         for item in rawArray {
             guard let sport = Sport(rawValue: item.trimmingCharacters(in: .whitespaces)) else {
-                // Issue some kind of log if something unexpected happens in production
                 #if DEBUGLOG
                 Logger.parsing.warning("Missing sport: \(item)")
                 #endif
