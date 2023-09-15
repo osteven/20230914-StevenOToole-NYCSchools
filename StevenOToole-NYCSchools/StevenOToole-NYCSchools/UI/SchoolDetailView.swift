@@ -45,11 +45,30 @@ struct SchoolDetailView: View {
                             }
                             .padding(.top, 16)
                         }
+                        if let sports = school.sports {
+                            VStack(alignment: .leading) {
+                                Text("Sports:").bold()
+                                ScrollView(.horizontal, showsIndicators: true) {
+                                    HStack(spacing: 32) {
+                                        ForEach(sports.all) { item in
+                                            VStack {
+                                                Image(systemName: item.imageName)
+                                                    .font(.system(size: 32))
+                                                Text(item.rawValue).font(.caption)
+                                            }
+                                        }
+                                    }
+                                }
+                                .padding(.leading, 16)
+                            }
+                            .padding(.top, 16)
+                        }
                         Spacer()
                     }
                     .padding(.horizontal, 16)
-                    .padding(.top, 32)
                 }
+                .padding(.top, 32)
+                .padding(.bottom, 256)
             }
         }
     }

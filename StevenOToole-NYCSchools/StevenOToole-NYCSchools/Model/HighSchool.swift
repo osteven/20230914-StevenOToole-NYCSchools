@@ -21,6 +21,7 @@ public struct HighSchool: Identifiable, Decodable {
     public let email: String?
     public let overviewParagraph: String
     public var scores: SATScore?
+    public let sports: Sports?
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -48,6 +49,24 @@ public struct HighSchool: Identifiable, Decodable {
             let maybeBoro = try container.decodeIfPresent(String.self, forKey: .boro)
             borough = Borough.decodeFrom(abbreviation: maybeBoro)
         }
+
+        // Note:: Apparently some schools have PSAL instead of school_sports. To keep it simple, I will merge them.
+        var allSports = [Sport]()
+        if let sports = try container.decodeIfPresent(Sports.self, forKey: .sports) {
+            allSports.append(contentsOf: sports.all)
+        }
+        if let psalBoys = try container.decodeIfPresent(Sports.self, forKey: .psalSportsBoys) {
+            allSports.append(contentsOf: psalBoys.all)
+        }
+        if let psalCoed = try container.decodeIfPresent(Sports.self, forKey: .psalSportsCoed) {
+            allSports.append(contentsOf: psalCoed.all)
+        }
+        if let psalSportsGirls = try container.decodeIfPresent(Sports.self, forKey: .psalSportsGirls) {
+            allSports.append(contentsOf: psalSportsGirls.all)
+        }
+
+        // Use a Set to eliminate duplicates
+        self.sports = allSports.isEmpty ? nil : Sports(all: Array(Set(allSports)))
     }
     
     enum CodingKeys: String, CodingKey {
@@ -60,6 +79,10 @@ public struct HighSchool: Identifiable, Decodable {
         case overviewParagraph = "overview_paragraph"
         case borough
         case boro
+        case sports = "school_sports"
+        case psalSportsBoys = "psal_sports_boys"
+        case psalSportsCoed = "psal_sports_coed"
+        case psalSportsGirls = "psal_sports_girls"
     }
 }
 
@@ -88,6 +111,7 @@ extension HighSchool {
         email = "admissions@theclintonschool.net"
         scores = SATScore()
         borough = .bronx
+        sports = Sports(all: [.cheerleading, .crossCountry, .flagFootball])
     }
     
     public static var mockJSON: String { """
