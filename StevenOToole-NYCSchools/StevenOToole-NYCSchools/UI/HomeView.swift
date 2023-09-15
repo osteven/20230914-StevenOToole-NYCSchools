@@ -54,15 +54,16 @@ struct HomeView: View {
 private struct SchoolListView: View {
     @EnvironmentObject var viewModel: ViewModel
     var body: some View {
-            List(viewModel.currentSelection) { item in
+        List {
+            ForEach(viewModel.currentSelection) { item in
                 NavigationLink {
                     SchoolDetailView(school: item)
                 } label: {
                     SchoolListCellView(item: item)
                 }
             }
-            .background(Color.clear)
-            .listStyle(.plain)
+            .listRowBackground(Color.Palette.teal.opacity(0.2))
+        }
     }
 }
 
@@ -77,20 +78,24 @@ private struct SchoolListCellView: View {
                     .frame(alignment: .leading)
                 Spacer()
             }
-            if let best = item.scores?.bestScore {
-                HStack(alignment: .lastTextBaseline) {
+            HStack(alignment: .lastTextBaseline) {
+                Text(item.borough.description).font(.caption).bold()
+                if let best = item.scores?.bestScore {
                     Spacer()
                     Text("Best SAT: \(best.0) \(best.1)")
                         .frame(alignment: .trailing)
                         .font(.caption2)
+                    
+                } else {
+                    Spacer()
                 }
-                .padding(8)
-            } else {
-                Spacer()
             }
+            .padding(.top, 8)
+            .padding(.bottom, 4)
+            .padding(.horizontal, 8)
         }
         .frame(minHeight: 64)
-        .background(Color.Palette.red.opacity(0.1).cornerRadius(8))
+        //        .background(Color.Palette.red.opacity(0.1).cornerRadius(8))
     }
 }
 

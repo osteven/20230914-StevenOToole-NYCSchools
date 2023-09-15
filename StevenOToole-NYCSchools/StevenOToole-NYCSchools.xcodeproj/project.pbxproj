@@ -22,6 +22,7 @@
 		B09484CB2AB3B2C2006757B5 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484CA2AB3B2C2006757B5 /* ViewModel.swift */; };
 		B09484CD2AB3B492006757B5 /* StandardLayoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */; };
 		B09484CF2AB3CF31006757B5 /* SchoolDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484CE2AB3CF31006757B5 /* SchoolDetailView.swift */; };
+		B09484D12AB3DEE0006757B5 /* Borough.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484D02AB3DEE0006757B5 /* Borough.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B09484CA2AB3B2C2006757B5 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardLayoutView.swift; sourceTree = "<group>"; };
 		B09484CE2AB3CF31006757B5 /* SchoolDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailView.swift; sourceTree = "<group>"; };
+		B09484D02AB3DEE0006757B5 /* Borough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borough.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,8 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				B02FE6A82AB3979600625809 /* HomeView.swift */,
-				B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */,
 				B09484CE2AB3CF31006757B5 /* SchoolDetailView.swift */,
+				B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -135,6 +137,7 @@
 			children = (
 				B09484C22AB3A41B006757B5 /* HighSchool.swift */,
 				B09484C42AB3AED3006757B5 /* SATScore.swift */,
+				B09484D02AB3DEE0006757B5 /* Borough.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				B09484B12AB39E9E006757B5 /* Color+Extensions.swift in Sources */,
 				B09484B42AB39EE4006757B5 /* Settings.swift in Sources */,
 				B09484CF2AB3CF31006757B5 /* SchoolDetailView.swift in Sources */,
+				B09484D12AB3DEE0006757B5 /* Borough.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

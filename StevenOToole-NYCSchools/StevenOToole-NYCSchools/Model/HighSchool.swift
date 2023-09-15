@@ -14,6 +14,7 @@ public typealias DBNIdentifier = String
 public struct HighSchool: Identifiable, Decodable {
     public let id: String
     public let name: String
+    public let borough: Borough
     public let latitude: Double?
     public let longitude: Double?
     public let totalStudents: Int?
@@ -39,6 +40,14 @@ public struct HighSchool: Identifiable, Decodable {
         totalStudents = Int(totalStudentsString)
         email = try container.decodeIfPresent(String.self, forKey: .email)
         overviewParagraph = try container.decode(String.self, forKey: .overviewParagraph)
+        
+        let maybeBorough = try container.decodeIfPresent(Borough.self, forKey: .borough)
+        if let maybeBorough {
+            borough = maybeBorough
+        } else {
+            let maybeBoro = try container.decodeIfPresent(String.self, forKey: .boro)
+            borough = Borough.decodeFrom(abbreviation: maybeBoro)
+        }
     }
     
     enum CodingKeys: String, CodingKey {
@@ -49,6 +58,8 @@ public struct HighSchool: Identifiable, Decodable {
         case totalStudents = "total_students"
         case email = "school_email"
         case overviewParagraph = "overview_paragraph"
+        case borough
+        case boro
     }
 }
 
@@ -76,6 +87,7 @@ extension HighSchool {
         totalStudents = 99
         email = "admissions@theclintonschool.net"
         scores = SATScore()
+        borough = .bronx
     }
     
     public static var mockJSON: String { """
