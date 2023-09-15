@@ -24,6 +24,7 @@
 		B09484CF2AB3CF31006757B5 /* SchoolDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484CE2AB3CF31006757B5 /* SchoolDetailView.swift */; };
 		B09484D12AB3DEE0006757B5 /* Borough.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484D02AB3DEE0006757B5 /* Borough.swift */; };
 		B09484D32AB3E3B0006757B5 /* Sports.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484D22AB3E3B0006757B5 /* Sports.swift */; };
+		B09484D52AB3EA07006757B5 /* EmailComposerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B09484D42AB3EA07006757B5 /* EmailComposerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 		B09484CE2AB3CF31006757B5 /* SchoolDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolDetailView.swift; sourceTree = "<group>"; };
 		B09484D02AB3DEE0006757B5 /* Borough.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Borough.swift; sourceTree = "<group>"; };
 		B09484D22AB3E3B0006757B5 /* Sports.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sports.swift; sourceTree = "<group>"; };
+		B09484D42AB3EA07006757B5 /* EmailComposerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailComposerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				B02FE6A82AB3979600625809 /* HomeView.swift */,
 				B09484CE2AB3CF31006757B5 /* SchoolDetailView.swift */,
 				B09484CC2AB3B492006757B5 /* StandardLayoutView.swift */,
+				B09484D42AB3EA07006757B5 /* EmailComposerView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				B02FE6A92AB3979600625809 /* HomeView.swift in Sources */,
 				B02FE6A72AB3979600625809 /* StevenOToole_NYCSchoolsApp.swift in Sources */,
 				B09484C52AB3AED3006757B5 /* SATScore.swift in Sources */,
+				B09484D52AB3EA07006757B5 /* EmailComposerView.swift in Sources */,
 				B09484C92AB3B0FC006757B5 /* NYCSchoolAPI.swift in Sources */,
 				B09484C72AB3B075006757B5 /* URLSession+Extension.swift in Sources */,
 				B09484C32AB3A41B006757B5 /* HighSchool.swift in Sources */,

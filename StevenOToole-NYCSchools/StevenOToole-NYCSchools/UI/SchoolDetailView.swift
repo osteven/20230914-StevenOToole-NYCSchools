@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct SchoolDetailView: View {
     let school: HighSchool
     private let satFont = Font.custom("", size: 14)
     private let satPad: CGFloat = 8
+    @State var showEmailComposer = false
 
     var body: some View {
         StandardLayoutView {
@@ -20,8 +22,21 @@ struct SchoolDetailView: View {
                     VStack(alignment: .leading) {
                         Text(school.name)
                             .font(.largeTitle)
+                            .foregroundColor(Color.Palette.teal)
                         if let email = school.email {
-                            Text(email)
+                            if EmailComposerView.canSend {
+                                Button(
+                                    action: sendEmail,
+                                    label: {
+                                        Image(systemName: "paperplane.fill")
+                                            .frame(width: 32)
+                                        Text(email)
+                                    })
+                                .padding(.top, 8)
+                            } else {
+                                Text(email)
+                                    .padding(.top, 4)
+                            }
                         }
                         Text(school.overviewParagraph)
                             .font(.callout).italic()
@@ -58,10 +73,21 @@ struct SchoolDetailView: View {
                                             }
                                         }
                                     }
+                                    .padding(.bottom, 16)
                                 }
                                 .padding(.leading, 16)
                             }
+                            .background(
+                                Color.Palette.teal
+                                    .opacity(0.1)
+                                    .scaleEffect(x: 1.1, y: 1.1)
+                            )
                             .padding(.top, 16)
+                        }
+                        if let coordinate = school.coordinate {
+                            MapView(coordinate: coordinate)
+                                .padding(.top, 32)
+                                .frame(idealHeight: 512)
                         }
                         Spacer()
                     }
@@ -71,6 +97,57 @@ struct SchoolDetailView: View {
                 .padding(.bottom, 256)
             }
         }
+        .sheet(
+            isPresented: $showEmailComposer,
+            onDismiss: dismissMailComposer) {
+                if let email = school.email {
+                    EmailComposerView(recipient: email)
+                }
+            }
+    }
+    
+    private func dismissMailComposer() { showEmailComposer = false }
+    private func sendEmail() { showEmailComposer = true }
+}
+
+extension HighSchool {
+    var coordinate: CLLocationCoordinate2D? {
+        guard let latitude, let longitude else { return nil }
+        return CLLocationCoordinate2D(
+            latitude: latitude,
+            longitude: longitude)
+    }
+}
+
+private struct MapView: View {
+    private let coordinate: CLLocationCoordinate2D
+    @State private var region: MKCoordinateRegion
+     
+    init(coordinate: CLLocationCoordinate2D) {
+        self.coordinate = coordinate
+        self.region = MKCoordinateRegion(
+            center: coordinate,
+            latitudinalMeters: 750,
+            longitudinalMeters: 750
+        )
+    }
+
+    var body: some View {
+        Map(
+            coordinateRegion: $region,
+            annotationItems: [SchoolPlace(coordinate: coordinate)]) { place in
+            MapMarker(coordinate: place.location,
+                      tint: Color.Palette.red)
+        }
+    }
+}
+
+private struct SchoolPlace: Identifiable {
+    let id: UUID
+    let location: CLLocationCoordinate2D
+    init(id: UUID = UUID(), coordinate: CLLocationCoordinate2D) {
+        self.id = id
+        self.location = coordinate
     }
 }
 
