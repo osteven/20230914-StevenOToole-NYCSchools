@@ -8,39 +8,53 @@
 import SwiftUI
 
 struct HomeView: View {
-    @EnvironmentObject var schoolAPI: NYCSchoolAPI
     @EnvironmentObject var viewModel: ViewModel
     
     var body: some View {
-        if viewModel.currentSelection.isEmpty {
-            ZStack(alignment: .top) {
-                Color.clear
-                VStack {
-                    Text("Welcome to NYC High Schools")
-                        .font(.title2)
-                        .padding(.top, 32)
-                        .padding()
-                    Button(action: apiAction, label: {
-                        VStack {
-                            Text("Touch here to load")
-                                .font(.callout)
-                                .padding(.bottom, 2)
-                            Text("(it will take a few seconds)")
-                                .font(.caption)
-                        }
-                    })
-                    Image(systemName: "graduationcap.fill")
-                        .resizable()
-                        .foregroundColor(.Palette.teal)
-                        .frame(width: 128, height: 128)
-                        .padding(.top, 32)
-                }
-            }
-        } else {
+        ZStack {
+            IntroView()
+                .opacity(viewModel.currentSelection.isEmpty ? 1.0 : 0.0)
+                .animation(.easeInOut, value: viewModel.currentSelection.isEmpty)
+            
             NavigationStack {
                 SchoolListView()
                     .navigationTitle("NYC High Schools")
                     .navigationBarTitleDisplayMode(.inline)
+            }
+            .opacity(viewModel.currentSelection.isEmpty ? 0.0 : 1.0)
+            .animation(.easeInOut, value: viewModel.currentSelection.isEmpty)
+        }
+    }
+}
+
+private struct IntroView: View {
+    @EnvironmentObject var schoolAPI: NYCSchoolAPI
+    @EnvironmentObject var viewModel: ViewModel
+    var body: some View {
+        ZStack(alignment: .top) {
+            Color.clear
+            VStack {
+                Text("Welcome to NYC High Schools")
+                    .font(.title2)
+                    .padding(.top, 32)
+                    .padding()
+                Button(action: apiAction, label: {
+                    VStack {
+                        Text("Touch here to load")
+                            .font(.callout)
+                            .padding(.bottom, 2)
+                        Text("(it will take a few seconds)")
+                            .font(.caption)
+                    }
+                })
+                .disabled(viewModel.loading)
+                Image(systemName: "graduationcap.fill")
+                    .resizable()
+                    .foregroundColor(.Palette.teal)
+                    .frame(width: 128, height: 128)
+                    .rotationEffect(viewModel.loading ? .degrees(360) : .zero)
+                    .animation(.easeInOut, value: viewModel.loading)
+                    .padding(.top, 32)
             }
         }
     }
@@ -49,7 +63,6 @@ struct HomeView: View {
         viewModel.load(with: schoolAPI)
      }
 }
-
 
 private struct SchoolListView: View {
     @EnvironmentObject var viewModel: ViewModel
@@ -95,7 +108,6 @@ private struct SchoolListCellView: View {
             .padding(.horizontal, 8)
         }
         .frame(minHeight: 64)
-        //        .background(Color.Palette.red.opacity(0.1).cornerRadius(8))
     }
 }
 

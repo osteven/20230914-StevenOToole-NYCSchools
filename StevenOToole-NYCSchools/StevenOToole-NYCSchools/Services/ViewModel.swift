@@ -14,7 +14,8 @@ import SwiftUI
 public class ViewModel: ObservableObject {
     private(set) var schoolDictionary = [DBNIdentifier: HighSchool]()
     @Published var currentSelection = [HighSchool]()
-    
+    @Published var loading = false
+
     public init() {}
     
     public func load(with api: NYCSchoolAPI) {
@@ -39,17 +40,15 @@ public class ViewModel: ObservableObject {
 
 extension ViewModel {
     private func loadSchools(with api: NYCSchoolAPI) {
+        loading = true
         api.getSchools { [weak self] result in
             guard let self else { return }
             switch result {
             case .success(let schools):
-//                print("🟢 \(schools.count)")
-//                for school in schools {
-//                    print("\t\(school.id) \(school.name);  \(school.borough)")
-//                }
                 loadScores(with: api, into: schools)
             case .failure(let error):
                 print(error.localizedDescription)
+                loading = false
             }
         }
     }
@@ -60,7 +59,6 @@ extension ViewModel {
             case .success(let allScores):
                 guard let self else { return }
                 var schoolDictionary = Dictionary(uniqueKeysWithValues: schools.map { ($0.id, $0) })
-                // do this with compactmap?
                 for score in allScores {
                     guard var school = schoolDictionary[score.id] else {
                         print("unmatched score: \(score)")
@@ -72,6 +70,7 @@ extension ViewModel {
                 set(schools: schoolDictionary)
             case .failure(let error):
                 print(error.localizedDescription)
+                self?.loading = false
             }
         }
     }
