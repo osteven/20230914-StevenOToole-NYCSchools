@@ -81,6 +81,13 @@ extension ViewModel {
 
 #if DEBUG
 extension ViewModel {
+    public func dump() {
+        print("🟠 SCHOOLS")
+        for school in currentSelection {
+            print("\t\(school.id) \(school.name)")
+        }
+    }
+    
     public func mockingSetup() {
         guard let scoresData = SATScore.mockJSON.data(using: .utf8) else {
             assertionFailure()

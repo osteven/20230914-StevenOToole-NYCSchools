@@ -56,19 +56,13 @@ private struct SchoolListView: View {
     var body: some View {
             List(viewModel.currentSelection) { item in
                 NavigationLink {
-                    SchoolDetailView()
+                    SchoolDetailView(school: item)
                 } label: {
                     SchoolListCellView(item: item)
                 }
             }
             .background(Color.clear)
             .listStyle(.plain)
-    }
-}
-
-private struct SchoolDetailView: View {
-    var body: some View {
-        Color.Palette.red
     }
 }
 

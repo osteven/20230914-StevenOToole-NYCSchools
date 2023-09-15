@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-enum Settings {
-    static let buttonGradientColors: [Color] = [.red.opacity(0.6), .red, .black]
-}
-
 extension Color {
     // https://colorhunt.co/palette/08d9d6252a34ff2e63eaeaea
     enum Palette {

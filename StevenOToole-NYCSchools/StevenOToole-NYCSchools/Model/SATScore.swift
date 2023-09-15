@@ -66,6 +66,15 @@ public struct SATScore: Decodable {
 
 #if DEBUG
 extension SATScore {
+    init() {
+        id = "mock"
+        name = "Not Used"
+        numberOfTakers = 7854
+        readingAvg = 338
+        mathAvg = 449
+        writingAvg = 227
+    }
+    
     public static var mockJSON: String { """
 [{
   "dbn": "21K728",
